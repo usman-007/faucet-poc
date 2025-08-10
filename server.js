@@ -8,7 +8,7 @@ const healthRoutes = require("./routes/healthRoutes");
 const faucetRoutes = require("./routes/faucetRoutes");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 
 // Middleware
 app.use(helmet());
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api/health", healthRoutes);
-app.use("/api/faucet", faucetRoutes);
+app.use("/api/v1/faucet", faucetRoutes);
 
 // Default route
 app.get("/", (req, res) => {
@@ -40,7 +40,7 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Health check available at: http://localhost:${PORT}/api/health`);
-  console.log(`Faucet API available at: http://localhost:${PORT}/api/faucet`);
+  console.log(`Faucet API available at: http://localhost:${PORT}/api/v1/faucet`);
 });
 
 module.exports = app;

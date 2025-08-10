@@ -55,13 +55,12 @@ npm start
 
 - `GET /` - Welcome message
 - `GET /api/health` - Basic health check
-- `GET /api/health/detailed` - Detailed health check with system info
 
 ### Faucet Service
 
-- `POST /api/faucet/request` - Request tokens from faucet
-- `GET /api/faucet/info` - Get faucet information and balance
-- `GET /api/faucet/transaction/:txHash` - Get transaction status
+- `POST /api/v1/faucet/request` - Request tokens from faucet
+- `GET /api/v1/faucet/info` - Get faucet information and balance
+- `GET /api/v1/faucet/transaction/:txHash` - Get transaction status
 
 ## Faucet API Usage
 

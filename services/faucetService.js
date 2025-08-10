@@ -102,9 +102,9 @@ class FaucetService {
       const latestBlock = await this.provider.getBlockNumber();
 
       return {
-        chainId: network.chainId,
+        chainId: network.chainId.toString(),
         name: network.name,
-        latestBlock,
+        latestBlock: latestBlock.toString(),
         faucetAddress: config.faucet.address,
         defaultAmount: ethers.formatEther(this.defaultAmount),
         maxAmount: ethers.formatEther(this.maxAmount),

@@ -1,5 +1,7 @@
 const FaucetService = require("../services/faucetService");
 const FaucetRequest = require("../models/FaucetRequest");
+const config = require("../config/config"); // Add this import
+const { ethers } = require("ethers"); 
 
 class FaucetController {
   static async requestTokens(req, res) {
@@ -9,7 +11,8 @@ class FaucetController {
       // Create and validate request model
       const faucetRequest = FaucetRequest.create({
         walletAddress,
-        tokenAmount: tokenAmount || "1", // Default to 1 token if not specified
+        tokenAmount:
+          tokenAmount || ethers.formatEther(config.faucet.tokensPerRequest),
       });
 
       const validation = faucetRequest.validate();
@@ -52,6 +55,8 @@ class FaucetController {
         faucetService.getFaucetBalance(),
         faucetService.getChainInfo(),
       ]);
+
+      console.log("Faucet info", balance, chainInfo);
 
       res.status(200).json({
         success: true,

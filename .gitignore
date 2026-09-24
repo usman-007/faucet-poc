@@ -44,7 +44,6 @@ jspm_packages/
 # dotenv environment variables file
 
 # IDE
-.vscode/
 .idea/
 *.swp
 *.swo
